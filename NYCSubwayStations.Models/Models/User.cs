@@ -6,10 +6,10 @@ namespace NYCSubwayStations.Models.Models
 {
     public class User
     {
-        public User(string username, string name, string email)
+        public User(string username, string password, string email)
         {
             Username = username ?? throw new ArgumentNullException(nameof(username));
-            Name = name ?? throw new ArgumentNullException(nameof(name));
+            Password = password ?? throw new ArgumentNullException(nameof(password));
             Email = email ?? throw new ArgumentNullException(nameof(email));
         }
 
@@ -17,7 +17,7 @@ namespace NYCSubwayStations.Models.Models
 
         public string Username { get; private set; }
 
-        public string Name { get; private set; }
+        public string Password { get; private set; }
 
         public string Email { get; private set; }
 

@@ -5,7 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.9" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.16.1" />
+    <PackageReference Include="NSwag.MSBuild" Version="13.16.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\NYCSubwayStations.BusinessLogic\NYCSubwayStations.BusinessLogic.csproj" />
+    <ProjectReference Include="..\NYCSubwayStations.Database\NYCSubwayStations.Database.csproj" />
     <ProjectReference Include="..\NYCSubwayStations.Models\NYCSubwayStations.Models.csproj" />
   </ItemGroup>
 
