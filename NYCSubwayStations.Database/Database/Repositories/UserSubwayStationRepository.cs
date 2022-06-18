@@ -7,21 +7,14 @@ using System.Threading.Tasks;
 
 namespace NYCSubwayStations.Database.Database.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserSubwayStationRepository : IUserSubwayStationRepository
     {
         private readonly SubwayStationsDbContext dbContext;
-        public UserRepository(SubwayStationsDbContext _dbContext)
+        public UserSubwayStationRepository(SubwayStationsDbContext _dbContext)
         {
             dbContext = _dbContext;
         }
-
-        public Task AddUserAsync(User user)
-        {
-            dbContext.Add(user);
-            return dbContext.SaveChangesAsync();
-        }
-
-        public Task<bool> EMailExists(string email)
+        public Task AddUserSubwayStation(UserSubwayStation userSubwayStation)
         {
             throw new NotImplementedException();
         }
