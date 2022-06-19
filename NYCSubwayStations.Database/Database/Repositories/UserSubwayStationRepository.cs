@@ -1,4 +1,5 @@
-﻿using NYCSubwayStations.BusinessLogic.User;
+﻿using Microsoft.EntityFrameworkCore;
+using NYCSubwayStations.BusinessLogic.User;
 using NYCSubwayStations.Models.Models;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace NYCSubwayStations.Database.Database.Repositories
         {
             dbContext = _dbContext;
         }
+
         public Task AddUserSubwayStation(UserSubwayStation userSubwayStation)
         {
             //Validate subwaystation exists
@@ -26,6 +28,12 @@ namespace NYCSubwayStations.Database.Database.Repositories
                 return dbContext.SaveChangesAsync(); 
             }
             throw new Exception("Subway Station doesn't exists");
+        }
+
+        public Task<List<UserSubwayStation>> GetUserFrequentlyStations(string username)
+        {
+            var userSubwayStations = dbContext.UserSubwayStations.Where(x => x.UserId == username).Include(x=>x.SubwayStation).ToListAsync();
+            return userSubwayStations;
         }
     }
 }

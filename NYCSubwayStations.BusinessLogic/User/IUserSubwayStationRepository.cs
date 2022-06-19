@@ -8,6 +8,7 @@ namespace NYCSubwayStations.BusinessLogic.User
 {
     public interface IUserSubwayStationRepository
     {
-        public Task AddUserSubwayStation(UserSubwayStation userSubwayStation);
+        Task AddUserSubwayStation(UserSubwayStation userSubwayStation);
+        Task<List<UserSubwayStation>> GetUserFrequentlyStations(string username);
     }
 }

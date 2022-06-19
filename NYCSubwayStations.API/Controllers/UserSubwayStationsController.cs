@@ -29,5 +29,17 @@ namespace NYCSubwayStations.API.Controllers
             }
             return Unauthorized();
         }
+        [HttpGet]
+        public async Task<ActionResult> GetUserFrequentlyStations(string username)
+        {
+            //validate authentication
+
+            if (true)//if valid
+            {
+                var userStations = await repo.GetUserFrequentlyStations(username);
+                return Ok(userStations);
+            }
+            return Unauthorized();
+        }
     }
 }
