@@ -29,8 +29,19 @@ namespace NYCSubwayStations.API.Controllers
         [HttpPost("GetDistanceBetweenStations")]
         public ActionResult GetDistanceBetweenStations(GetDistanceBetweenStationsRequest stationsId)
         {
-            var distanceBetweenStations = repo.GetDistanceBetweenStations(stationsId.FromStationId, stationsId.ToStationId);
-            return Ok(distanceBetweenStations + " Meters");
+            try
+            {
+                var distanceBetweenStations = repo.GetDistanceBetweenStations(stationsId.FromStationId, stationsId.ToStationId);
+                return Ok(distanceBetweenStations + " Meters");
+            }
+            catch (Exception e)
+            {
+                if (e.Message.ToLower().Contains("the subway station selected"))
+                {
+                    return BadRequest(e.Message);
+                }
+                throw e;
+            }
         }
     }
 }

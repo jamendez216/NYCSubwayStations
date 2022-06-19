@@ -26,19 +26,31 @@ namespace NYCSubwayStations.API.Controllers
         }
 
         [HttpPost("AddUserSubwayStation")]
-        public async Task<ActionResult> AddUserSubwayStation(AddUserSubwayStation userSubwayStation)
+        public async Task<ActionResult> AddUserSubwayStation(int subwayStationId)
         {
             if (username != null)
             {
-                await repo.AddUserSubwayStation(new UserSubwayStation(userSubwayStation.Username, userSubwayStation.SubwayStationId));
-                return Ok();
+                try
+                {
+                    await repo.AddUserSubwayStation(new UserSubwayStation(username, subwayStationId));
+                    return Ok();
+                }
+                catch (Exception e)
+                {
+                    if (e.Message.ToLower().Contains("subway station"))
+                    {
+                        return BadRequest(e.Message);
+                    }
+                    throw; ;
+                }
+
             }
             return Unauthorized();
         }
         [HttpGet("GetUserFrequentlyStations")]
         public async Task<ActionResult> GetUserFrequentlyStations()
         {
-            if (User != null)
+            if (username != null)
             {
                 var userStations = await repo.GetUserFrequentlyStations(username);
                 return Ok(userStations);

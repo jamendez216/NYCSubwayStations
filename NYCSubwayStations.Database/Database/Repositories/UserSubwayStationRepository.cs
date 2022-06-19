@@ -19,15 +19,18 @@ namespace NYCSubwayStations.Database.Database.Repositories
 
         public Task AddUserSubwayStation(UserSubwayStation userSubwayStation)
         {
-            //Validate subwaystation exists
-
             var subwayStationExists = dbContext.SubwayStations.Any(x => x.Id == userSubwayStation.SubwayStationId);
             if (subwayStationExists)
             {
-                dbContext.UserSubwayStations.AddAsync(userSubwayStation);
-                return dbContext.SaveChangesAsync(); 
+                var userSubwayStationExsists = dbContext.UserSubwayStations.Where(x => x.UserId == userSubwayStation.UserId && x.SubwayStationId == userSubwayStation.SubwayStationId).Any();
+                if (!userSubwayStationExsists)
+                {
+                    dbContext.UserSubwayStations.AddAsync(userSubwayStation);
+                    return dbContext.SaveChangesAsync(); 
+                }
+                throw new Exception("User already have this subway station as frequently used.");
             }
-            throw new Exception("Subway Station doesn't exists");
+            throw new Exception("Subway station doesn't exists");
         }
 
         public Task<List<UserSubwayStation>> GetUserFrequentlyStations(string username)

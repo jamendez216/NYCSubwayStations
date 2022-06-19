@@ -44,7 +44,14 @@ namespace NYCSubwayStations.Database.Database.Repositories
         {
             var fromStation = dbContext.SubwayStations.FirstOrDefault(x => x.Id == fromStationId);
             var toStation = dbContext.SubwayStations.FirstOrDefault(x => x.Id == toStationId);
-
+            if (fromStation == null)
+            {
+                throw new Exception("The subway station selected as fromStation doesn't exist.");
+            }
+            if (toStation == null)
+            {
+                throw new Exception("The subway station selected as toStation doesn't exist.");
+            }
             Location fromStationLocation = new Location(fromStation.Latitude, fromStation.Longitude);
             Location toStationLocation = new Location(toStation.Latitude, toStation.Longitude);
 
