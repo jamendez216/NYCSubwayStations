@@ -1,7 +1,9 @@
-﻿using NYCSubwayStations.BusinessLogic.User;
+﻿using Microsoft.EntityFrameworkCore;
+using NYCSubwayStations.BusinessLogic.User;
 using NYCSubwayStations.Models.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,7 +25,7 @@ namespace NYCSubwayStations.Database.Database.Repositories
 
         public Task<bool> EMailExists(string email)
         {
-            throw new NotImplementedException();
+            return dbContext.Users.Where(x => x.Email == email).AnyAsync();
         }
     }
 }

@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace NYCSubwayStations.API.Controllers
 {
-    [Route("api/[controller]")]
     public class UserController : ApiController
     {
         private readonly IUserRepository repo;
@@ -28,6 +27,6 @@ namespace NYCSubwayStations.API.Controllers
             }
             return BadRequest();
         }
-
+        
     }
 }
