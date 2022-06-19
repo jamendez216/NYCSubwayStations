@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NYCSubwayStations.Database\NYCSubwayStations.Database.csproj" />
     <ProjectReference Include="..\NYCSubwayStations.Models\NYCSubwayStations.Models.csproj" />
   </ItemGroup>
 

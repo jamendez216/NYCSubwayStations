@@ -6,15 +6,17 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NYCSubwayStations.BusinessLogic\NYCSubwayStations.BusinessLogic.csproj" />
     <ProjectReference Include="..\NYCSubwayStations.Models\NYCSubwayStations.Models.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Database\Configurations\" />
-    <Folder Include="Database\Migrations\" />
   </ItemGroup>
 
 </Project>
