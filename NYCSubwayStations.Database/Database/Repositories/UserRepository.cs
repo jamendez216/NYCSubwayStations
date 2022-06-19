@@ -27,5 +27,10 @@ namespace NYCSubwayStations.Database.Database.Repositories
         {
             return dbContext.Users.Where(x => x.Email == email).AnyAsync();
         }
+
+        public Task<User> GetUserFromCredentials(string email, string password)
+        {
+            return dbContext.Users.Where(x => x.Email == email && x.Password == password).FirstOrDefaultAsync();
+        }
     }
 }

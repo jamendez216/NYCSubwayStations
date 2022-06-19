@@ -9,5 +9,6 @@ namespace NYCSubwayStations.BusinessLogic.User
     {
         public Task AddUserAsync(Models.Models.User user);
         public Task<bool> EMailExists(string email);
+        public Task<Models.Models.User> GetUserFromCredentials(string email, string password);
     }
 }

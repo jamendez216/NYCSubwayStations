@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NYCSubwayStations.API.RequestModels;
 using NYCSubwayStations.BusinessLogic.User;
 using NYCSubwayStations.Models.Models;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace NYCSubwayStations.API.Controllers
 {
+    [Authorize]
     public class SubwayStationsController : ApiController
     {
         private readonly ISubwayStationRepository repo;
@@ -17,7 +19,7 @@ namespace NYCSubwayStations.API.Controllers
             repo = _repo;
         }
 
-        [HttpGet]
+        [HttpGet("GetNYCSubwayStations")]
         public async Task<ActionResult> GetNYCSubwayStations()
         {
             //Check authentication
