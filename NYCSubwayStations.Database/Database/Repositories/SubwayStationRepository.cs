@@ -29,7 +29,7 @@ namespace NYCSubwayStations.Database.Database.Repositories
                 catch (Exception e)
                 {
                     var itemerror = item.Id;
-                    throw;
+                    throw e;
                 }
             }
             return dbContext.SaveChangesAsync();

@@ -22,27 +22,15 @@ namespace NYCSubwayStations.API.Controllers
         [HttpGet("GetNYCSubwayStations")]
         public async Task<ActionResult> GetNYCSubwayStations()
         {
-            //Check authentication
-            if (true)
-            {
-                var subwayStations = await repo.GetAllSubwayStations();
-                return Ok(subwayStations);
-            }
-            return Unauthorized();
+            var subwayStations = await repo.GetAllSubwayStations();
+            return Ok(subwayStations);
         }
 
         [HttpPost("GetDistanceBetweenStations")]
         public ActionResult GetDistanceBetweenStations(GetDistanceBetweenStationsRequest stationsId)
         {
-            //Check authentication
-            if (true)
-            {
-                var distanceBetweenStations = repo.GetDistanceBetweenStations(stationsId.FromStationId, stationsId.ToStationId);
-                return Ok(distanceBetweenStations + " Meters");
-            }
-            return Unauthorized();
+            var distanceBetweenStations = repo.GetDistanceBetweenStations(stationsId.FromStationId, stationsId.ToStationId);
+            return Ok(distanceBetweenStations + " Meters");
         }
-
-
     }
 }
