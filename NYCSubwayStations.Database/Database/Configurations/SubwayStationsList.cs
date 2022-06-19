@@ -8,6 +8,10 @@ namespace NYCSubwayStations.Database.Database.Configurations
 {
     public class SubwayStationsList
     {
+        public SubwayStationsList()
+        {
+            subwayStations = GetSubwayStationsFromJson();
+        }
         private List<SubwayStation> _subwayStations;
         public List<SubwayStation> subwayStations 
         { 

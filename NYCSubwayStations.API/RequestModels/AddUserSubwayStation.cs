@@ -7,7 +7,7 @@ namespace NYCSubwayStations.API.RequestModels
 {
     public class AddUserSubwayStation
     {
-        public string Username { get; private set; }
+        public string Username { get; set; }
         public int SubwayStationId { get; set; }
     }
 }

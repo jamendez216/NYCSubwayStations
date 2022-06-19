@@ -17,17 +17,27 @@ namespace NYCSubwayStations.API.Controllers
             repo = _repo;
         }
 
-        [HttpPost]
-        public async Task<ActionResult> AddSubwayStations(List<SubwayStation> subwayStations)
+        [HttpGet]
+        public async Task<ActionResult> GetNYCSubwayStations()
         {
-            //validate authentication
-
-            if (true)//if valid
+            //Check authentication
+            if (true)
             {
-                await repo.AddSubwayStations(subwayStations);
-                return Ok();
+                var subwayStations = await repo.GetAllSubwayStations();
+                return Ok(subwayStations);
             }
             return Unauthorized();
         }
+
+        /*
+        [HttpPost]
+        public async Task<ActionResult> AddSubwayStations(List<SubwayStation> subwayStations)
+        {
+            CREATED METHOD TO DO THE INITIAL CHARGE OF ALL NYC SUBWAY STATIONS -SINCE THIS IS SOMETHING PRETTY MUCH STATIC, I COMMENTED THIS METHOD AFTER INSERTING ALL THE SUBWAY STATIONS
+
+           await repo.AddSubwayStations(subwayStations);
+            return Ok();
+        }
+        */
     }
 }

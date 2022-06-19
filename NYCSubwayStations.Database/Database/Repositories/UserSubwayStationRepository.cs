@@ -2,6 +2,7 @@
 using NYCSubwayStations.Models.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +17,15 @@ namespace NYCSubwayStations.Database.Database.Repositories
         }
         public Task AddUserSubwayStation(UserSubwayStation userSubwayStation)
         {
-            throw new NotImplementedException();
+            //Validate subwaystation exists
+
+            var subwayStationExists = dbContext.SubwayStations.Any(x => x.Id == userSubwayStation.SubwayStationId);
+            if (subwayStationExists)
+            {
+                dbContext.UserSubwayStations.AddAsync(userSubwayStation);
+                return dbContext.SaveChangesAsync(); 
+            }
+            throw new Exception("Subway Station doesn't exists");
         }
     }
 }
