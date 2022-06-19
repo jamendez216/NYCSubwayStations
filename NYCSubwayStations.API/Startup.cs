@@ -39,6 +39,7 @@ namespace NYCSubwayStations.API
 
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserSubwayStationRepository, UserSubwayStationRepository>();
+            services.AddTransient<ISubwayStationRepository, SubwayStationRepository>();
 
             services.AddOpenApiDocument(configure =>
             {

@@ -9,6 +9,7 @@ namespace NYCSubwayStations.Database.Database.Configurations
 {
     public class SubwayStationConfiguration : IEntityTypeConfiguration<SubwayStation>
     {
+        private SubwayStationsList data = new SubwayStationsList();
         public void Configure(EntityTypeBuilder<SubwayStation> builder)
         {
             builder.HasKey(e => e.Id);
@@ -18,6 +19,7 @@ namespace NYCSubwayStations.Database.Database.Configurations
             builder.HasIndex(e => new { e.Latitude, e.Longitude })
                 .IsUnique();
 
+            builder.HasData(data.subwayStations);
         }
     }
 }

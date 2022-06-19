@@ -19,8 +19,4 @@
     <ProjectReference Include="..\NYCSubwayStations.Models\NYCSubwayStations.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Database\Migrations\" />
-  </ItemGroup>
-
 </Project>

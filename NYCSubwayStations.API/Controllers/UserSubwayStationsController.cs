@@ -9,22 +9,22 @@ using System.Threading.Tasks;
 
 namespace NYCSubwayStations.API.Controllers
 {
-    public class SubwayStationsController : ApiController
+    public class UserSubwayStationsController : ApiController
     {
-        private readonly ISubwayStationRepository repo;
-        public SubwayStationsController(ISubwayStationRepository _repo)
+        private readonly IUserSubwayStationRepository repo;
+        public UserSubwayStationsController(IUserSubwayStationRepository _repo)
         {
             repo = _repo;
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddSubwayStations(List<SubwayStation> subwayStations)
+        public async Task<ActionResult> AddUserSubwayStation(AddUserSubwayStation userSubwayStation)
         {
             //validate authentication
 
             if (true)//if valid
             {
-                await repo.AddSubwayStations(subwayStations);
+                await repo.AddUserSubwayStation(new UserSubwayStation(userSubwayStation.Username, userSubwayStation.SubwayStationId));
                 return Ok();
             }
             return Unauthorized();
