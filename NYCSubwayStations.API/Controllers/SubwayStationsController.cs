@@ -29,5 +29,18 @@ namespace NYCSubwayStations.API.Controllers
             return Unauthorized();
         }
 
+        [HttpPost("GetDistanceBetweenStations")]
+        public ActionResult GetDistanceBetweenStations(GetDistanceBetweenStationsRequest stationsId)
+        {
+            //Check authentication
+            if (true)
+            {
+                var distanceBetweenStations = repo.GetDistanceBetweenStations(stationsId.FromStationId, stationsId.ToStationId);
+                return Ok(distanceBetweenStations + " Meters");
+            }
+            return Unauthorized();
+        }
+
+
     }
 }

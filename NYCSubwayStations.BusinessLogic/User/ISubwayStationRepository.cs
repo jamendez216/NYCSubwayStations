@@ -10,5 +10,6 @@ namespace NYCSubwayStations.BusinessLogic.User
     {
         Task<List<SubwayStation>> GetAllSubwayStations();
         Task AddSubwayStations(List<SubwayStation> subwayStations);
+        double GetDistanceBetweenStations(int fromStationId, int toStationId);
     }
 }
