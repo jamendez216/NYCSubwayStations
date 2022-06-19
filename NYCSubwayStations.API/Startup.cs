@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -41,10 +42,12 @@ namespace NYCSubwayStations.API
                Configuration.GetConnectionString("DbContext"),
                b => b.MigrationsAssembly(typeof(SubwayStationsDbContext).Assembly.FullName)));
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserSubwayStationRepository, UserSubwayStationRepository>();
             services.AddTransient<ISubwayStationRepository, SubwayStationRepository>();
+
             services.AddHttpContextAccessor();
             services.AddOpenApiDocument(configure =>
             {
