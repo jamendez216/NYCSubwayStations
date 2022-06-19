@@ -7,8 +7,9 @@ namespace NYCSubwayStations.BusinessLogic.User
 {
     public interface IUserRepository
     {
-        public Task AddUserAsync(Models.Models.User user);
-        public Task<bool> EMailExists(string email);
-        public Task<Models.Models.User> GetUserFromCredentials(string email, string password);
+        Task AddUserAsync(Models.Models.User user);
+        Task<bool> EMailExists(string email);
+        Task<Models.Models.User> GetUserFromCredentials(string email, string password);
+        Task<bool> UsernameExists(string username);
     }
 }

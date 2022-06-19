@@ -14,10 +14,6 @@ namespace NYCSubwayStations.Database.Database
         {
 
         }
-        public SubwayStationsDbContext(DbContextOptions<SubwayStationsDbContext> options) : base(options)
-        {
-
-        }
 
         public DbSet<SubwayStation> SubwayStations { get; set; }
         public DbSet<UserSubwayStation> UserSubwayStations { get; set; }

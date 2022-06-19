@@ -28,12 +28,13 @@ namespace NYCSubwayStations.API.Controllers
         public async Task<ActionResult> AddUserAsync(AddUserRequest user)
         {
             var emailExists = await repo.EMailExists(user.Email);
-            if (!emailExists)
+            var userExists = await repo.UsernameExists(user.Username);
+            if (!emailExists && !userExists)
             {
                 await repo.AddUserAsync(new Models.Models.User(user.Username, user.Password, user.Email));
                 return Ok();
             }
-            return BadRequest();
+            return BadRequest("Email or Username already in use.");
         }
 
         [HttpPost("Login")]
